@@ -123,6 +123,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 /* Mobile nav */
 .nav-mobile {
+  height: calc(100vh - 70px);
   position: fixed; inset: 70px 0 0 0;
   background: var(--surface); padding: 1.5rem var(--gutter);
   display: flex; flex-direction: column; gap: 0.4rem;

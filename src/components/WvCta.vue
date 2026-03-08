@@ -30,9 +30,13 @@
             <option v-for="opt in serviceOptions" :key="opt" :value="opt">{{ opt }}</option>
           </select>
           <textarea v-model="form.message" placeholder="Kratko opiši čime se baviš i šta bi trebao/la..."></textarea>
-          <button type="submit" class="btn-submit" :disabled="submitted">
-            <span v-if="!submitted">Pošalji poruku ☕</span>
-            <span v-else>✓ Poruka poslana! Kontaktirat ću te uskoro.</span>
+
+          <p v-if="errorMsg" class="cta-error">{{ errorMsg }}</p>
+
+          <button type="submit" class="btn-submit" :disabled="loading || submitted">
+            <span v-if="loading">⏳ Šaljem...</span>
+            <span v-else-if="submitted">✓ Poruka poslana! Kontaktirat ću te uskoro.</span>
+            <span v-else>Pošalji poruku ☕</span>
           </button>
           <p class="cta-small">Odgovaram u roku od 24h · Konzultacija je potpuno besplatna</p>
         </form>
@@ -42,13 +46,73 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+
+const EMAILJS_SERVICE_ID  = 'service_gxdfiyd'
+const EMAILJS_TEMPLATE_ID = 'template_ejh1imq'
+const EMAILJS_PUBLIC_KEY  = '6cVhpM225sgMjs90Y'
 
 const submitted = ref(false)
+const loading   = ref(false)
+const errorMsg  = ref('')
 
 const form = reactive({
   name: '', email: '', phone: '', service: '', message: ''
 })
+
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js'
+  script.onload = () => {
+    window.emailjs.init(EMAILJS_PUBLIC_KEY)
+  }
+  document.head.appendChild(script)
+})
+
+function validate() {
+  if (!form.name.trim())  { errorMsg.value = 'Upiši svoje ime.'; return false }
+  if (!form.email.trim()) { errorMsg.value = 'Upiši email adresu.'; return false }
+  if (!/\S+@\S+\.\S+/.test(form.email)) { errorMsg.value = 'Email adresa nije ispravna.'; return false }
+  errorMsg.value = ''
+  return true
+}
+
+async function handleSubmit() {
+  if (!validate()) return
+  loading.value = true
+  errorMsg.value = ''
+
+  // Trenutno vrijeme za "time" varijablu u templateu
+  const now = new Date()
+  const timeStr = now.toLocaleString('bs-BA', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  })
+
+  try {
+    await window.emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name:  form.name,
+        from_email: form.email,
+        name:       form.name,
+        email:      form.email,
+        phone:      form.phone   || 'Nije upisano',
+        service:    form.service || 'Nije odabrano',
+        message:    form.message || 'Bez poruke',
+        title:      'Novi upit — Web Vizija',
+        time:       timeStr,
+      }
+    )
+    submitted.value = true
+  } catch (err) {
+    console.error('EmailJS greška:', err)
+    errorMsg.value = 'Nešto je pošlo po krivu. Kontaktiraj me direktno na webbvizija@gmail.com'
+  } finally {
+    loading.value = false
+  }
+}
 
 const perks = [
   'Besplatne konzultacije — nema skrivenih troškova',
@@ -63,11 +127,6 @@ const serviceOptions = [
   'Fotografija', 'Pisanje sadržaja',
   'Softversko rješenje', 'Sve zajedno / Ne znam još',
 ]
-
-function handleSubmit() {
-  // TODO: connect to your backend / email service (EmailJS, Netlify Forms, etc.)
-  submitted.value = true
-}
 </script>
 
 <style scoped>
@@ -108,6 +167,14 @@ function handleSubmit() {
 .cta-form select option { background: #1a2e26; }
 .cta-form textarea { height: 95px; resize: none; }
 
+.cta-error {
+  color: #ffaa88; font-size: 0.82rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(244,132,95,0.15);
+  border: 1px solid rgba(244,132,95,0.3);
+  border-radius: var(--radius-sm);
+}
+
 .btn-submit {
   padding: 0.95rem; background: var(--brand-accent); color: white; border: none;
   border-radius: 100px; font-family: var(--font-body); font-size: 1rem; font-weight: 600;
@@ -115,7 +182,7 @@ function handleSubmit() {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
 }
 .btn-submit:hover:not(:disabled) { background: #e8714a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,132,95,0.4); }
-.btn-submit:disabled { background: #0f7b6c; cursor: default; }
+.btn-submit:disabled { background: #0f7b6c; cursor: default; opacity: 0.85; }
 .cta-small { text-align: center; font-size: 0.73rem; color: rgba(255,255,255,0.35); }
 
 @media(max-width: 768px) { .cta-block { grid-template-columns: 1fr; } }

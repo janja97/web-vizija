@@ -8,7 +8,7 @@
           <WvLogo :light="true" />
           <p>Tvoj digitalni partner za web, marketing, fotografiju i sve između. Jedno rješenje za sve digitalne potrebe tvog biznisa.</p>
           <div class="footer-socials">
-            <a href="https://instagram.com/webvizija" target="_blank" rel="noopener" class="soc-btn" title="Instagram">
+            <a href="https://www.instagram.com/web_vizija/" target="_blank" rel="noopener" class="soc-btn" title="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <circle cx="12" cy="12" r="4"/>

@@ -101,7 +101,7 @@ const projects = [
     image: '/img/sentic.png',
     emoji: '🏠',
     category: 'Smještaj',
-    title: 'Apartmani Šentić',
+    title: 'Apartmani Sentić',
     desc: 'Booking stranica za apartmane',
     url: 'https://www.apartmani-sentic.com/',
   },

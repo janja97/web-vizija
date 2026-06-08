@@ -8,7 +8,9 @@
         <!-- Left: text + perks -->
         <div class="cta-left">
           <span class="cta-label">☕ Bez obaveza</span>
-          <h2 class="cta-title">Hajde da popijemo<br><span>kafu i pričamo.</span></h2>
+          <h2 class="cta-title">
+            Imamš ideju, hajdemo razgovarati.<br>
+            <span>Svaki dobar projekt počinje jednim razgovorom.</span></h2>
           <p class="cta-desc">
             Bez složenih forma, bez čekanja. Zakaži besplatnu konzultaciju i hajde razgovaramo
             o tome kako da tvoj biznis izgleda bolje online.

@@ -77,7 +77,7 @@ const services = [
   {
     icon: '📸', title: 'Profesionalna fotografija',
     desc: 'Fotografija za web, e-commerce i društvene mreže. Produkt, prostori, portretna fotografija — sve za bolji vizualni identitet.',
-    tags: ['Produkt', 'Prostori', 'Portret'],
+    tags: ['Produkt', 'Prostori'],
   },
   {
     icon: '✍️', title: 'Copywriting',

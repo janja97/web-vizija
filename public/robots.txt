@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://webvizija.ba/sitemap.xml

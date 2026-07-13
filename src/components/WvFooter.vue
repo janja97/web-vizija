@@ -72,7 +72,7 @@ const footerCols = [
     links: [
       { label: 'Lounge Bar',          href: '#', external: false },
       { label: 'Premium Photography', href: '#', external: false },
-      { label: 'Apartmani Šentić',    href: '#', external: false },
+      { label: 'Apartmani Sentić',    href: '#', external: false },
       { label: 'NeoGym',              href: '#', external: false },
       { label: 'Svi radovi →',        href: '#radovi', scroll: true },
     ],

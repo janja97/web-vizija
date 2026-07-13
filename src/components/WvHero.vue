@@ -9,17 +9,12 @@
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="eyebrow-dot"></span>
-          BiH · HR · SRB — Regionalni digitalni partner
+          {{ eyebrow }}
         </div>
 
-        <h1 class="hero-title">
-          Tvoj biznis<br>zaslužuje <em>pravo</em><br>digitalno lice.
-        </h1>
+        <h1 class="hero-title" v-html="titleHtml"></h1>
 
-        <p class="hero-desc">
-          Web stranice, aplikacije, online shopovi, marketing, fotografija, pisanje sadržaja —
-          sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.
-        </p>
+        <p class="hero-desc">{{ desc }}</p>
 
         <div class="hero-actions">
           <a href="#kontakt" class="btn-primary" @click.prevent="scrollTo('#kontakt')">
@@ -45,7 +40,7 @@
             <div class="browser-dots">
               <span></span><span></span><span></span>
             </div>
-            <div class="browser-url">🔒 webvizija.ba</div>
+            <div class="browser-url">🔒 {{ browserUrl }}</div>
           </div>
           <div class="browser-screen">
             <div class="m-nav">
@@ -90,6 +85,13 @@
 </template>
 
 <script setup>
+defineProps({
+  eyebrow:    { type: String, default: 'BiH · HR · SRB — Regionalni digitalni partner' },
+  titleHtml:  { type: String, default: 'Tvoj biznis<br>zaslužuje <em>pravo</em><br>digitalno lice.' },
+  desc:       { type: String, default: 'Web stranice, aplikacije, online shopovi, marketing, fotografija, pisanje sadržaja — sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.' },
+  browserUrl: { type: String, default: 'webvizija.ba' },
+})
+
 const stats = [
   { num: '50', suffix: '+', label: 'Završenih projekata' },
   { num: '3',  suffix: '+', label: 'Države' },

@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="wv-logo" :class="{ 'logo--light': light }">
+  <router-link to="/" class="wv-logo" :class="{ 'logo--light': light }">
 
     <!-- ── SVG Logo Mark ── -->
     <svg
@@ -75,7 +75,7 @@
       <span class="logo-tagline">Digitalni partner</span>
     </div>
 
-  </a>
+  </router-link>
 </template>
 
 <script setup>

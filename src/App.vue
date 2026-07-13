@@ -2,26 +2,20 @@
   <div id="app">
     <WvNav />
     <main>
-      <WvHero />
-      <WvServices />
-      <WvWhy />
-      <WvPortfolio />
-      <WvReviews />
-      <WvCta />
+      <router-view />
     </main>
     <WvFooter />
   </div>
-</template> 
+</template>
 
 <script setup>
-import WvNav       from './components/WvNav.vue'
-import WvHero      from './components/WvHero.vue'
-import WvServices  from './components/WvServices.vue'
-import WvWhy       from './components/WvWhy.vue'
-import WvPortfolio from './components/WvPortfolio.vue'
-import WvReviews   from './components/WvReviews.vue'
-import WvCta       from './components/WvCta.vue'
-import WvFooter    from './components/WvFooter.vue'
+import { onMounted } from 'vue'
+import WvNav    from './components/WvNav.vue'
+import WvFooter from './components/WvFooter.vue'
+import { setHreflangLinks } from './composables/useSeoMeta'
+import { markets } from './data/markets'
+
+onMounted(() => setHreflangLinks(markets))
 </script>
 
 <style>

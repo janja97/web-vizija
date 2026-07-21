@@ -125,7 +125,6 @@ const perks = [
 
 const serviceOptions = [
   'Web stranica', 'Online shop', 'Web aplikacija',
-  'Vođenje društvenih mreža', 'Digitalni marketing',
   'Fotografija', 'Pisanje sadržaja',
   'Softversko rješenje', 'Sve zajedno / Ne znam još',
 ]

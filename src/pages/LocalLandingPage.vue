@@ -3,7 +3,7 @@
     :eyebrow="market.eyebrow"
     :title-html="market.heroTitleHtml"
     :desc="market.heroDesc"
-    :browser-url="'webvizija.ba/' + market.slug"
+    :browser-url="'webvizija.com/' + market.slug"
   />
   <WvLocalIntro :market="market" :market-key="marketKey" />
   <WvServices />

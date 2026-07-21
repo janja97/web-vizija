@@ -4,7 +4,7 @@
 
 import { watchEffect } from 'vue'
 
-const SITE_URL = 'https://webvizija.ba'
+const SITE_URL = 'https://webvizija.com'
 
 function setMetaTag(attr, key, content) {
   if (!content) return

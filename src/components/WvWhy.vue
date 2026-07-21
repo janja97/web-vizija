@@ -32,11 +32,11 @@ import { useReveal } from '../composables/useReveal'
 useReveal()
 
 const items = [
-  { icon: '🎯', title: 'Sve na jednom mjestu',     desc: 'Web, marketing, foto, sadržaj — sve pokrivaš sa jednom osobom. Nema prebacivanja između agencija i gubitka vremena.' },
-  { icon: '💬', title: 'Direktna komunikacija',    desc: 'Pričaš direktno sa mnom — ne s koordinatorom. Brže, jasnije, efikasnije.' },
+  { icon: '🎯', title: 'Sve na jednom mjestu',     desc: 'Web, dizajn, foto, sadržaj — sve pokrivaš sa jednom osobom. Nema prebacivanja između agencija i gubitka vremena.' },
+  { icon: '💬', title: 'Direktna komunikacija',    desc: 'Radiš izravno sa mnom, stručnjakom koji izrađuje tvoju stranicu — bez posrednika i nepotrebnih koordinatora. Brže, jasnije, efikasnije.' },
   { icon: '🔧', title: 'Prilagodba i fleksibilnost',desc: 'Svaki projekat je drugačiji. Prilagođavam se tvojim potrebama, budžetu i rokovima — ne obratno.' },
-  { icon: '☕', title: 'Besplatne konzultacije',   desc: 'Nisi obavezan ništa kupiti. Dođi na razgovor, dobij savjete, i sam odluči. Bez pritiska.' },
-  { icon: '🚀', title: 'Brza isporuka',             desc: 'Efikasan workflow znači da tvoja web stranica bude live za 7–14 dana. Bez čekanja na slobodan termin.' },
+  { icon: '☕', title: 'Besplatne konzultacije',   desc: 'Besplatna uvodna konzultacija bez ikakvih obaveza ili prodajnog pritiska. Dođi na razgovor, dobij savjete, i sam odluči.' },
+  { icon: '🚀', title: 'Brza isporuka',             desc: 'Izrada web stranica obično traje između 7 i 14 dana. Efikasan workflow, bez čekanja na slobodan termin.' },
   { icon: '📍', title: 'Regionalno iskustvo',       desc: 'Razumijem tržišta BiH, Hrvatske i Srbije — jezik, kulturu, navike kupaca.' },
 ]
 </script>

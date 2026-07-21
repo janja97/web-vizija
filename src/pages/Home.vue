@@ -17,9 +17,9 @@ import WvCta        from '../components/WvCta.vue'
 import { useSeoMeta, SITE_URL } from '../composables/useSeoMeta'
 
 useSeoMeta(() => ({
-  title: 'Web Vizija — Web stranice, Marketing & Digitalni partner | BiH, HR, SRB',
-  description: 'Web Vizija — profesionalna izrada web stranica, online shopova, aplikacija, vođenje društvenih mreža, digitalni marketing i fotografija. Besplatne konzultacije. Mostar, BiH.',
-  keywords: 'izrada web stranica, web dizajn, izrada sajtova, online shop, digitalni marketing',
+  title: 'Web Vizija — Izrada web stranica | BiH, HR, SRB',
+  description: 'Web Vizija — profesionalna izrada web stranica, online shopova, aplikacija i fotografija. Besplatne konzultacije, isporuka za 7–14 dana. Mostar, BiH.',
+  keywords: 'izrada web stranica, web dizajn, izrada sajtova, online shop, SEO optimizacija',
   canonical: `${SITE_URL}/`,
   ogLocale: 'bs_BA',
 }))

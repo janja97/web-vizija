@@ -6,7 +6,7 @@
         <!-- Brand col -->
         <div class="footer-brand">
           <WvLogo :light="true" />
-          <p>Tvoj digitalni partner za web, marketing, fotografiju i sve između. Jedno rješenje za sve digitalne potrebe tvog biznisa.</p>
+          <p>Tvoj digitalni partner za web, fotografiju i sve između. Jedno rješenje za sve digitalne potrebe tvog biznisa.</p>
           <div class="footer-socials">
             <a href="https://www.instagram.com/web_vizija/" target="_blank" rel="noopener" class="soc-btn" title="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,8 +61,6 @@ const footerCols = [
       { label: 'Web stranice',        href: '#usluge', scroll: true },
       { label: 'Online shopovi',      href: '#usluge', scroll: true },
       { label: 'Web aplikacije',      href: '#usluge', scroll: true },
-      { label: 'Društvene mreže',     href: '#usluge', scroll: true },
-      { label: 'Marketing',           href: '#usluge', scroll: true },
       { label: 'Fotografija',         href: '#usluge', scroll: true },
       { label: 'Copywriting',         href: '#usluge', scroll: true },
     ],

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webvizija.ba/sitemap.xml
+Sitemap: https://webvizija.com/sitemap.xml

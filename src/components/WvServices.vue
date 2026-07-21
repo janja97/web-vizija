@@ -5,7 +5,7 @@
         <p class="section-eyebrow">Šta radimo</p>
         <h2 class="section-title">Sve digitalne usluge<br>na <span>jednom mjestu</span></h2>
         <p class="section-sub">
-          Umjesto da angažuješ više agencija — sa mnom dobijaš sve: dizajn, razvoj, marketing,
+          Umjesto da angažuješ više agencija — sa mnom dobijaš sve: dizajn, razvoj,
           fotografiju i sadržaj. Prilagođeno tebi, tvojim rokovima i budžetu.
         </p>
       </div>
@@ -65,23 +65,13 @@ const services = [
     tags: ['React', 'Vue', 'Full-stack'],
   },
   {
-    icon: '📣', title: 'Vođenje društvenih mreža',
-    desc: 'Strategija, kreacija sadržaja, objave i analitika za Instagram, Facebook i LinkedIn. Tvoj brand uvijek aktivan i dosljedan.',
-    tags: ['Instagram', 'Facebook', 'LinkedIn'],
-  },
-  {
-    icon: '🎯', title: 'Digitalni marketing',
-    desc: 'Google Ads, Meta kampanje, SEO optimizacija — targetirani marketing koji donosi stvarne rezultate i mjerljiv ROI.',
-    tags: ['Google Ads', 'Meta Ads', 'SEO'],
-  },
-  {
     icon: '📸', title: 'Profesionalna fotografija',
-    desc: 'Fotografija za web, e-commerce i društvene mreže. Produkt, prostori fotografija — sve za bolji vizualni identitet.',
+    desc: 'Fotografija za web i e-commerce. Produkt, prostori fotografija — sve za bolji vizualni identitet.',
     tags: ['Produkt', 'Prostori'],
   },
   {
     icon: '✍️', title: 'Copywriting',
-    desc: 'Tekstovi koji prodaju i inspirišu — za web, SEO blogove, opise proizvoda, newslettere i objave na mrežama.',
+    desc: 'Tekstovi koji prodaju i inspirišu — za web, SEO blogove, opise proizvoda i newslettere.',
     tags: ['SEO tekstovi', 'Copywriting', 'Blog'],
   },
   {

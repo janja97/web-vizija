@@ -22,14 +22,16 @@
             <img
               v-if="project.image"
               :src="project.image"
-              :alt="project.title"
+              :alt="`${project.title} — izrada web stranice, ${project.category}`"
+              loading="lazy"
               class="portfolio-img"
             />
             <div v-else class="portfolio-thumb-fallback">{{ project.emoji }}</div>
             <div class="portfolio-overlay">
-              <a :href="project.url" target="_blank" rel="noopener" class="portfolio-overlay-btn">
+              <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="portfolio-overlay-btn">
                 ↗ Otvori stranicu
               </a>
+              <span v-else class="portfolio-overlay-btn portfolio-overlay-static">Demo na zahtjev</span>
             </div>
           </div>
           <div class="portfolio-info">
@@ -49,15 +51,6 @@
         </a>
       </div> -->
 
-      <!-- Software placeholder -->
-      <div class="software-zone reveal">
-        <span class="sw-zone-icon">⚙️</span>
-        <div>
-          <span class="sw-badge">Uskoro</span>
-          <h3>Softverska rješenja</h3>
-          <p>Ovdje će biti primjeri manjih softverskih rješenja — sistemi za upravljanje, automatizacije i prilagođene aplikacije.</p>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -73,36 +66,52 @@ function scrollTo(href) {
 
 const projects = [
   {
+    image: '/img/Silver-Trend.png',
+    emoji: '💎',
+    category: 'Web shop — Nakit i satovi',
+    title: 'Silver-Trend',
+    desc: 'Web shop nakita i satova s admin panelom, statistikom prodaje i praćenjem poslovanja i baze.',
+    url: 'https://www.silver-trend.com',
+    featured: true,
+  },
+  {
+    image: '/img/kartica-vijernosti.png',
+    emoji: '💳',
+    category: 'Web aplikacija — Program vjernosti',
+    title: 'Kartica vjernosti',
+    desc: 'Web aplikacija u kojoj se korisnici prijavljuju, preuzimaju digitalnu karticu tvrtke i skupljaju bodove — kompanija može nuditi više različitih programa vjernosti.',
+    url: null,
+  },
+  {
+    image: '/img/Primavera.png',
+    emoji: '🏡',
+    category: 'Web aplikacija — Nekretnine',
+    title: 'Primavera',
+    desc: 'Web aplikacija agencije za nekretnine — pregledna ponuda prodaje, najma i novogradnje, profili agenata i besplatna procjena vrijednosti nekretnine.',
+    url: null,
+  },
+  {
     image: '/img/lounge-bar.png',
     emoji: '🍹',
     category: 'Bar & Kafić',
     title: 'Lounge Bar',
-    desc: 'Moderna web stranica za bar s atmosferom',
+    desc: 'Web stranica bara koja gostima predstavlja priču lokala, ponudu sadržaja i cjenik pića.',
     url: 'https://lounges.netlify.app/',
-    featured: true,
   },
   {
     image: '/img/premium.png',
     emoji: '📸',
     category: 'Fotografija',
     title: 'Premium Photography',
-    desc: 'Portfolio stranica za profesionalnog fotografa',
+    desc: 'Web stranica na kojoj fotograf predstavlja svoje radove, uz mogućnost izravnog kontakta.',
     url: 'https://premiumphotography.netlify.app/',
-  },
-  {
-    image: '/img/neo.png',
-    emoji: '🏋️',
-    category: 'Gym & Fitness',
-    title: 'NeoGym',
-    desc: 'Web stranica za fitness centar',
-    url: 'https://neog.netlify.app/',
   },
   {
     image: '/img/sentic.png',
     emoji: '🏠',
-    category: 'Smještaj',
+    category: 'Smještaj — Neum',
     title: 'Apartmani Sentić',
-    desc: 'Booking stranica za apartmane',
+    desc: 'Web stranica smještaja u Neumu s detaljnim informacijama o kompleksu i svakom apartmanu posebno.',
     url: 'https://www.apartmani-sentic.com/',
   },
   {
@@ -110,23 +119,23 @@ const projects = [
     emoji: '☕',
     category: 'Kafić',
     title: 'Branch Café',
-    desc: 'Elegantna web stranica za kafić',
+    desc: 'Web stranica kafića s mogućnošću rezervacije stolova putem web aplikacije.',
     url: 'https://branch-cafe.netlify.app/',
   },
   {
-    image: '/img/caffemenu1.png',
-    emoji: '☕',
-    category: 'Kafić',
-    title: 'Café Menu',
-    desc: 'Digitalni meni za kafić',
-    url: 'https://caffemenu2.netlify.app/',
+    image: '/img/Plusecollection.png',
+    emoji: '🏋️',
+    category: 'Web stranica — Teretana',
+    title: 'PulseCollection',
+    desc: 'Web stranica teretane s pregledom rasporeda treninga te predstavljanjem prostora i trenera kluba.',
+    url: null,
   },
   {
     image: '/img/tvornica.png',
     emoji: '🎭',
     category: 'Zabava & Events',
     title: 'Tvornica Zabave',
-    desc: 'Web stranica za event i zabavni centar',
+    desc: 'Vesela web stranica igraonice — predstavlja ponudu, cjenik proslava i omogućuje rezervaciju termina.',
     url: 'https://tvornica-zabave.netlify.app/',
   },
   {
@@ -134,15 +143,15 @@ const projects = [
     emoji: '📷',
     category: 'Foto studio',
     title: 'Flesh Studio',
-    desc: 'Web stranica za foto studio',
+    desc: 'Web stranica hrvatskog fotografa za predstavljanje njegovih radova.',
     url: 'https://flesh-studio.netlify.app/',
   },
   {
     image: '/img/dom.png',
     emoji: '🌿',
-    category: 'Usluge',
+    category: 'Usluge čišćenja',
     title: 'Blistav Dom',
-    desc: 'Web stranica za usluge čišćenja i održavanja doma',
+    desc: 'Web stranica usluge čišćenja doma i ureda, s mogućnošću zatražiti ponudu izravno preko stranice.',
     url: 'https://blistav.netlify.app/',
   },
 ]
@@ -202,7 +211,7 @@ h2.section-title span { color: var(--brand-primary); font-style: italic; }
 }
 .portfolio-img {
   width: 100%; height: 100%;
-  object-fit: cover; display: block;
+  object-fit: cover; object-position: top; display: block;
   transition: transform 0.45s ease;
 }
 .portfolio-card:hover .portfolio-img { transform: scale(1.04); }
@@ -227,6 +236,7 @@ h2.section-title span { color: var(--brand-primary); font-style: italic; }
   text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
   transform: translateY(10px); transition: transform var(--transition);
 }
+.portfolio-overlay-static { cursor: default; }
 .portfolio-card:hover .portfolio-overlay-btn { transform: translateY(0); }
 
 .portfolio-info { padding: 1.2rem 1.4rem; }
@@ -237,20 +247,6 @@ h2.section-title span { color: var(--brand-primary); font-style: italic; }
 .extra-links { margin-top: 1.5rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
 .extra-btn { font-size: 0.82rem; padding: 0.55rem 1.1rem; }
 
-.software-zone {
-  margin-top: 2.5rem; padding: 2rem 2.5rem; background: white;
-  border: 2px dashed var(--border); border-radius: var(--radius-lg);
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-}
-.sw-zone-icon { font-size: 2.5rem; flex-shrink: 0; }
-.sw-badge {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--brand-accent-light); color: var(--brand-accent);
-  padding: 0.25rem 0.8rem; border-radius: 100px; font-size: 0.72rem; font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.software-zone h3 { font-family: var(--font-display); font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
-.software-zone p { color: var(--text-muted); font-size: 0.88rem; max-width: 400px; }
 
 @media(max-width: 900px) {
   .portfolio-grid { grid-template-columns: 1fr; }

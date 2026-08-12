@@ -1,0 +1,11 @@
+{
+  "name": "Web Vizija — Izrada web stranica i web aplikacija",
+  "short_name": "Web Vizija",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }
+  ],
+  "theme_color": "#0f7b6c",
+  "background_color": "#fafaf8",
+  "display": "standalone",
+  "start_url": "/"
+}

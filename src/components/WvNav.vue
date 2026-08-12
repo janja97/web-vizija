@@ -5,7 +5,10 @@
 
       <ul class="nav-links">
         <li v-for="link in links" :key="link.href">
-          <a :href="link.href" @click.prevent="scrollTo(link.href)">{{ link.label }}</a>
+          <a
+            :href="onHome ? link.href : `/${link.href}`"
+            @click="onLinkClick($event, link.href)"
+          >{{ link.label }}</a>
         </li>
       </ul>
 
@@ -24,8 +27,8 @@
     <Transition name="mobile-nav">
       <div v-if="mobileOpen" class="nav-mobile">
         <a v-for="link in links" :key="link.href"
-           :href="link.href"
-           @click.prevent="mobileNavClick(link.href)">
+           :href="onHome ? link.href : `/${link.href}`"
+           @click="mobileLinkClick($event, link.href)">
           {{ link.label }}
         </a>
         <a href="#kontakt" class="btn-nav" @click.prevent="mobileNavClick('#kontakt')">
@@ -37,23 +40,36 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import WvLogo from './WvLogo.vue'
+
+const route = useRoute()
+const onHome = computed(() => route.path === '/')
 
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
 
 const links = [
-  { href: '#usluge',   label: 'Usluge' },
-  { href: '#radovi',   label: 'Radovi' },
-  { href: '#zasto-mi', label: 'Zašto mi?' },
-  { href: '#recenzije',label: 'Recenzije' },
-  { href: '#kontakt',  label: 'Kontakt' },
+  { href: '#usluge',         label: 'Usluge' },
+  { href: '#radovi',         label: 'Radovi' },
+  { href: '#zasto-mi',       label: 'Zašto mi?' },
+  { href: '#recenzije',      label: 'Recenzije' },
+  { href: '#zatrazi-ponudu', label: 'Cjenik' },
+  { href: '#kontakt',        label: 'Kontakt' },
 ]
 
 function scrollTo(href) {
   const el = document.querySelector(href)
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+// Na Home glatko skrolamo; na drugim rutama (npr. tržišne landing stranice)
+// pustimo browser da normalno navigira na "/#zatrazi-ponudu" jer sekcija ondje ne postoji.
+function onLinkClick(event, href) {
+  if (!onHome.value) return
+  event.preventDefault()
+  scrollTo(href)
 }
 
 function toggleMobile() {
@@ -63,6 +79,12 @@ function toggleMobile() {
 function mobileNavClick(href) {
   mobileOpen.value = false
   setTimeout(() => scrollTo(href), 50)
+}
+
+function mobileLinkClick(event, href) {
+  if (!onHome.value) { mobileOpen.value = false; return }
+  event.preventDefault()
+  mobileNavClick(href)
 }
 
 function onScroll() {

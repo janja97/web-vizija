@@ -34,7 +34,7 @@ useReveal()
 const reviews = [
   { initials: 'AH', name: 'Amina H.',   biz: 'Nail Studio, Mostar',    text: 'Odlična saradnja od prvog kontakta. Stranica je gotova brže nego što sam očekivala, dizajn je tačno ono što sam zamišljala.' },
   { initials: 'MB', name: 'Marko B.',   biz: 'Apartmani, Split',       text: 'Konačno neko ko sluša šta trebaš! Dobili smo kompletan web i Instagram. Rezervacije su nam porasle 40% u prvom mjesecu.' },
-  { initials: 'DK', name: 'Dario K.',   biz: 'Online shop, Zagreb',    text: 'Profesionalno, brzo i po razumnoj cijeni. Imao sam ideju, a Web Vizija ju je pretvorila u stvarnost.' },
+  { initials: 'DK', name: 'Dario K.',   biz: 'Web shop, Zagreb',    text: 'Profesionalno, brzo i po razumnoj cijeni. Imao sam ideju, a Web Vizija ju je pretvorila u stvarnost.' },
   { initials: 'LM', name: 'Lejla M.',   biz: 'Beauty Studio, Sarajevo',text: 'Tražila sam nekoga ko razumije moj stil. Dobila sam web stranicu i foto materijal koji savršeno predstavljaju moj studio.' },
   { initials: 'IN', name: 'Ivan N.',    biz: 'Kafić, Banja Luka',      text: 'Besplatna konzultacija me je uvjerila. Jasno je objašnjeno sve što nam treba, bez tehničkog žargona.' },
   { initials: 'SJ', name: 'Sara J.',    biz: 'Restoran, Mostar',       text: 'Radimo zajedno već godinu dana — web, društvene mreže, foto. Pravi partner za digitalni razvoj biznisa.' },
@@ -51,7 +51,7 @@ h2.section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3v
 h2.section-title span { color: var(--brand-primary); font-style: italic; }
 .section-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.7; max-width: 520px; margin-top: 0.8rem; }
 
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.2rem; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: 1.2rem; }
 .review-card { background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.8rem; transition: all var(--transition); }
 .review-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-3px); }
 .review-stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 0.8rem; }

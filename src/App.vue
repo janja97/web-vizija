@@ -75,7 +75,7 @@ onMounted(() => setHreflangLinks(markets))
 
 /* Reset */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body {
   background: var(--bg);
   color: var(--text);

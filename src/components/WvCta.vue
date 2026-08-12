@@ -124,9 +124,9 @@ const perks = [
 ]
 
 const serviceOptions = [
-  'Web stranica', 'Online shop', 'Web aplikacija',
+  'Web stranica', 'Web shop', 'Web aplikacije i SaaS',
   'Fotografija', 'Pisanje sadržaja',
-  'Softversko rješenje', 'Sve zajedno / Ne znam još',
+  'Sve zajedno / Ne znam još',
 ]
 </script>
 

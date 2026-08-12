@@ -69,7 +69,7 @@
           <span class="float-icon">✅</span>
           <div>
             <strong>Projekat završen</strong>
-            <span class="float-sub">Isporuka za 14 dana</span>
+            <span class="float-sub">Isporuka za 7–14 dana</span>
           </div>
         </div>
         <div class="hero-float float2">
@@ -88,7 +88,7 @@
 defineProps({
   eyebrow:    { type: String, default: 'BiH · HR · SRB — Regionalni digitalni partner' },
   titleHtml:  { type: String, default: 'Tvoj biznis<br>zaslužuje <em>pravo</em><br>digitalno lice.' },
-  desc:       { type: String, default: 'Web stranice, aplikacije, online shopovi, fotografija, pisanje sadržaja — sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.' },
+  desc:       { type: String, default: 'Web stranice, aplikacije, web shopovi, fotografija, pisanje sadržaja — sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.' },
   browserUrl: { type: String, default: 'webvizija.com' },
 })
 

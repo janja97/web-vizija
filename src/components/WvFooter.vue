@@ -59,8 +59,8 @@ const footerCols = [
     title: 'Usluge',
     links: [
       { label: 'Web stranice',        href: '#usluge', scroll: true },
-      { label: 'Online shopovi',      href: '#usluge', scroll: true },
-      { label: 'Web aplikacije',      href: '#usluge', scroll: true },
+      { label: 'Web shopovi',         href: '#usluge', scroll: true },
+      { label: 'Web aplikacije i SaaS', href: '#usluge', scroll: true },
       { label: 'Fotografija',         href: '#usluge', scroll: true },
       { label: 'Copywriting',         href: '#usluge', scroll: true },
     ],
@@ -68,10 +68,10 @@ const footerCols = [
   {
     title: 'Radovi',
     links: [
+      { label: 'Silver-Trend',        href: 'https://www.silver-trend.com', external: true },
       { label: 'Lounge Bar',          href: '#', external: false },
       { label: 'Premium Photography', href: '#', external: false },
       { label: 'Apartmani Sentić',    href: '#', external: false },
-      { label: 'NeoGym',              href: '#', external: false },
       { label: 'Svi radovi →',        href: '#radovi', scroll: true },
     ],
   },

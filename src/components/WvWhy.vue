@@ -67,7 +67,7 @@ h2.section-title {
 }
 .why-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 520px; margin-top: 0.8rem; }
 
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1.2rem; }
 .why-item {
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-lg); padding: 1.8rem; transition: all var(--transition);

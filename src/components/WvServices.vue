@@ -31,13 +31,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Software placeholder -->
-      <div class="software-placeholder reveal">
-        <p class="sw-emoji">⚙️</p>
-        <h4>Manja softverska rješenja</h4>
-        <p>Specifična rješenja po mjeri — sistemi za upravljanje, automatizacija procesa, integracije. <strong>Uskoro primjeri projekata.</strong></p>
-      </div>
     </div>
   </section>
 </template>
@@ -55,14 +48,14 @@ const services = [
     tags: ['Landing page', 'Poslovni web', 'Blog'],
   },
   {
-    icon: '🛒', title: 'Online shopovi',
-    desc: 'E-commerce rješenja koja prodaju. Od malog boutique shopa do velikog kataloga — sa sigurnim plaćanjem i upravljanjem narudžbama.',
-    tags: ['WooCommerce', 'Shopify', 'Custom'],
+    icon: '📱', title: 'Web aplikacije i SaaS',
+    desc: 'Izrada web aplikacija i sistema po mjeri za tvoj biznis — rezervacijski sistemi, korisnički portali, dashboardi, konfiguratori i prilagođena funkcionalnost koju standardna stranica ne može ponuditi.',
+    tags: ['React', 'Vue', 'SaaS'],
   },
   {
-    icon: '📱', title: 'Web aplikacije',
-    desc: 'Prilagođena rješenja za tvoj biznis — rezervacijski sistemi, portali, dashboardi, konfiguratori i sve što ti treba.',
-    tags: ['React', 'Vue', 'Full-stack'],
+    icon: '🛒', title: 'Web shopovi',
+    desc: 'E-commerce rješenja koja prodaju. Od malog boutique shopa do velikog kataloga — sa sigurnim plaćanjem, admin panelom i upravljanjem narudžbama.',
+    tags: ['WooCommerce', 'Shopify', 'Custom'],
   },
   {
     icon: '📸', title: 'Profesionalna fotografija',
@@ -88,7 +81,7 @@ const services = [
 .inner { max-width: var(--container); margin: 0 auto; }
 
 .services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
 }
 .service-card {
@@ -120,12 +113,4 @@ const services = [
   color: var(--brand-primary); border-radius: 100px; font-size: 0.7rem; font-weight: 600;
 }
 
-.software-placeholder {
-  margin-top: 2rem; padding: 2rem; text-align: center;
-  background: linear-gradient(135deg, var(--brand-primary-xlight), #fff8f5);
-  border: 1.5px dashed rgba(15,123,108,0.25); border-radius: var(--radius-lg);
-}
-.sw-emoji { font-size: 1.8rem; margin-bottom: 0.5rem; }
-.software-placeholder h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
-.software-placeholder p { color: var(--text-muted); font-size: 0.88rem; }
 </style>

@@ -19,13 +19,28 @@
           :class="{ featured: project.featured, [`d${i % 3}`]: true }"
         >
           <div class="portfolio-thumb">
-            <img
-              v-if="project.image"
-              :src="project.image"
-              :alt="`${project.title} — izrada web stranice, ${project.category}`"
-              loading="lazy"
-              class="portfolio-img"
-            />
+            <div v-if="project.image" class="mockup" :class="{ 'no-phone': !project.imageMobile }">
+              <div class="laptop">
+                <div class="laptop-screen">
+                  <img
+                    :src="project.image"
+                    :alt="`${project.title} — izrada web stranice, ${project.category}`"
+                    loading="lazy"
+                    class="portfolio-img"
+                    :style="project.imagePosition ? { objectPosition: project.imagePosition } : null"
+                  />
+                </div>
+                <div class="laptop-base"></div>
+              </div>
+              <div v-if="project.imageMobile" class="phone">
+                <img
+                  :src="project.imageMobile"
+                  :alt="`${project.title} — prikaz web stranice na mobitelu`"
+                  loading="lazy"
+                  class="portfolio-img"
+                />
+              </div>
+            </div>
             <div v-else class="portfolio-thumb-fallback">{{ project.emoji }}</div>
             <div class="portfolio-overlay">
               <a v-if="project.url" :href="project.url" target="_blank" rel="noopener" class="portfolio-overlay-btn">
@@ -84,6 +99,7 @@ const projects = [
   },
   {
     image: '/img/Primavera.png',
+    imagePosition: 'top left',
     emoji: '🏡',
     category: 'Web aplikacija — Nekretnine',
     title: 'Primavera',
@@ -92,6 +108,7 @@ const projects = [
   },
   {
     image: '/img/lounge-bar.png',
+    imageMobile: '/img/mobile/lounge-bar.jpg',
     emoji: '🍹',
     category: 'Bar & Kafić',
     title: 'Lounge Bar',
@@ -100,6 +117,7 @@ const projects = [
   },
   {
     image: '/img/premium.png',
+    imageMobile: '/img/mobile/premium.jpg',
     emoji: '📸',
     category: 'Fotografija',
     title: 'Premium Photography',
@@ -108,6 +126,7 @@ const projects = [
   },
   {
     image: '/img/sentic.png',
+    imageMobile: '/img/mobile/sentic.jpg',
     emoji: '🏠',
     category: 'Smještaj — Neum',
     title: 'Apartmani Sentić',
@@ -116,6 +135,7 @@ const projects = [
   },
   {
     image: '/img/branch.png',
+    imageMobile: '/img/mobile/branch.jpg',
     emoji: '☕',
     category: 'Kafić',
     title: 'Branch Café',
@@ -132,6 +152,7 @@ const projects = [
   },
   {
     image: '/img/tvornica.png',
+    imageMobile: '/img/mobile/tvornica.jpg',
     emoji: '🎭',
     category: 'Zabava & Events',
     title: 'Tvornica Zabave',
@@ -140,6 +161,7 @@ const projects = [
   },
   {
     image: '/img/flash.png',
+    imageMobile: '/img/mobile/flash.jpg',
     emoji: '📷',
     category: 'Foto studio',
     title: 'Flesh Studio',
@@ -148,6 +170,7 @@ const projects = [
   },
   {
     image: '/img/dom.png',
+    imageMobile: '/img/mobile/dom.jpg',
     emoji: '🌿',
     category: 'Usluge čišćenja',
     title: 'Blistav Dom',
@@ -205,16 +228,59 @@ h2.section-title span { color: var(--brand-primary); font-style: italic; }
 .portfolio-card.featured { grid-column: span 2; }
 
 .portfolio-thumb {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/10;
   position: relative; overflow: hidden;
-  background: var(--surface2);
+  background: linear-gradient(135deg, var(--surface2) 0%, var(--bg-warm) 100%);
+  container-type: inline-size;
 }
 .portfolio-img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top; display: block;
+}
+
+/* Laptop + phone mockup — sizes in cqw so it scales with the card */
+.mockup {
+  position: absolute; inset: 0;
   transition: transform 0.45s ease;
 }
-.portfolio-card:hover .portfolio-img { transform: scale(1.04); }
+.portfolio-card:hover .mockup { transform: scale(1.03); }
+
+.laptop {
+  position: absolute; left: 9%; top: 50%; width: 68%;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 2.5cqw 3cqw rgba(0,0,0,0.18));
+}
+.mockup.no-phone .laptop { left: 16%; }
+.laptop-screen {
+  aspect-ratio: 16/10; overflow: hidden;
+  background: #16181d; padding: 1.4cqw 1.4cqw 1.8cqw;
+  border-radius: 2cqw 2cqw 0 0;
+}
+.laptop-screen .portfolio-img { border-radius: 0.5cqw; }
+.laptop-base {
+  position: relative; height: 2cqw; width: 116%; margin-left: -8%;
+  background: linear-gradient(#e3e6ea, #b9bec6);
+  border-radius: 0 0 2cqw 2cqw;
+}
+.laptop-base::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  width: 16%; height: 40%; transform: translateX(-50%);
+  background: #a4a9b2; border-radius: 0 0 1cqw 1cqw;
+}
+
+.phone {
+  position: absolute; right: 9%; bottom: 9%; width: 17%;
+  aspect-ratio: 400/866; overflow: hidden;
+  background: #16181d; padding: 0.9cqw;
+  border-radius: 3cqw;
+  box-shadow: 0 2cqw 4cqw rgba(0,0,0,0.28);
+}
+.phone .portfolio-img { border-radius: 2.2cqw; }
+.phone::before {
+  content: ''; position: absolute; top: 1.5cqw; left: 50%;
+  width: 28%; height: 1cqw; transform: translateX(-50%);
+  background: #16181d; border-radius: 1cqw; z-index: 1;
+}
 
 .portfolio-thumb-fallback {
   width: 100%; height: 100%;

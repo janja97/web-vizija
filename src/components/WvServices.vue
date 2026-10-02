@@ -19,7 +19,7 @@
           :style="service.featured ? 'background:linear-gradient(135deg,var(--brand-primary-xlight),white)' : ''"
         >
           <div class="service-icon-wrap" :style="service.featured ? 'background:white' : ''">
-            {{ service.icon }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" v-html="service.icon"></svg>
           </div>
           <h3>{{ service.title }}</h3>
           <p>{{ service.desc }}</p>
@@ -43,32 +43,32 @@ useReveal()
 
 const services = [
   {
-    icon: '🌐', title: 'Web stranice',
+    icon: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>', title: 'Web stranice',
     desc: 'Moderne, brze i mobilno prilagođene web stranice koje ostavljaju pravi utisak na posjetitelje i pretvaraju ih u kupce.',
     tags: ['Landing page', 'Poslovni web', 'Blog'],
   },
   {
-    icon: '📱', title: 'Web aplikacije i SaaS',
+    icon: '<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>', title: 'Web aplikacije i SaaS',
     desc: 'Izrada web aplikacija i sistema po mjeri za tvoj biznis — rezervacijski sistemi, korisnički portali, dashboardi, konfiguratori i prilagođena funkcionalnost koju standardna stranica ne može ponuditi.',
     tags: ['React', 'Vue', 'SaaS'],
   },
   {
-    icon: '🛒', title: 'Web shopovi',
+    icon: '<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>', title: 'Web shopovi',
     desc: 'E-commerce rješenja koja prodaju. Od malog boutique shopa do velikog kataloga — sa sigurnim plaćanjem, admin panelom i upravljanjem narudžbama.',
     tags: ['WooCommerce', 'Shopify', 'Custom'],
   },
   {
-    icon: '📸', title: 'Profesionalna fotografija',
+    icon: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>', title: 'Profesionalna fotografija',
     desc: 'Fotografija za web i e-commerce. Produkt, prostori fotografija — sve za bolji vizualni identitet.',
     tags: ['Produkt', 'Prostori'],
   },
   {
-    icon: '✍️', title: 'Copywriting',
+    icon: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>', title: 'Copywriting',
     desc: 'Tekstovi koji prodaju i inspirišu — za web, SEO blogove, opise proizvoda i newslettere.',
     tags: ['SEO tekstovi', 'Copywriting', 'Blog'],
   },
   {
-    icon: '🤝', title: 'Besplatne konzultacije',
+    icon: '<rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>', title: 'Besplatne konzultacije',
     desc: 'Nisi siguran odakle početi? Zakaži besplatan razgovor — bez obaveza, bez prodajnog pritiska. Samo korisni savjeti.',
     tags: ['Online', 'In-person', 'Besplatno'],
     featured: true,
@@ -100,10 +100,11 @@ const services = [
 .service-icon-wrap {
   width: 52px; height: 52px; background: var(--brand-primary-xlight);
   border-radius: var(--radius-md); display: flex; align-items: center;
-  justify-content: center; font-size: 1.4rem; margin-bottom: 1.3rem;
+  justify-content: center; color: var(--brand-primary); margin-bottom: 1.3rem;
   transition: transform var(--transition);
 }
-.service-card:hover .service-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+.service-icon-wrap svg { width: 24px; height: 24px; }
+.service-card:hover .service-icon-wrap { transform: scale(1.08); }
 .service-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--text); margin-bottom: 0.6rem; }
 .service-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.65; }
 

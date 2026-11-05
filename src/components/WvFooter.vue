@@ -32,6 +32,10 @@
 
       </div>
 
+      <nav class="footer-markets" aria-label="Izrada web stranica po državama">
+        <router-link v-for="m in marketList" :key="m.key" :to="`/${m.slug}`">{{ m.introHeading }}</router-link>
+      </nav>
+
       <div class="footer-bottom">
         <p>© {{ year }} <span>Web Vizija</span>. Sva prava zadržana. Napravljeno s <span>♥</span> za digitalni uspjeh.</p>
         <div class="footer-legal">
@@ -46,6 +50,7 @@
 <script setup>
 import { computed } from 'vue'
 import WvLogo from './WvLogo.vue'
+import { marketList } from '../data/markets'
 
 const year = computed(() => new Date().getFullYear())
 
@@ -68,10 +73,10 @@ const footerCols = [
   {
     title: 'Radovi',
     links: [
-      { label: 'Silver-Trend',        href: 'https://www.silver-trend.com', external: true },
-      { label: 'Lounge Bar',          href: '#', external: false },
-      { label: 'Premium Photography', href: '#', external: false },
-      { label: 'Apartmani Sentić',    href: '#', external: false },
+      { label: 'Silver-Trend',        href: 'https://silver-trend.ba/', external: true },
+      { label: 'Lounge Bar',          href: 'https://lounges.netlify.app/', external: true },
+      { label: 'Premium Photography', href: 'https://premiumphotography.netlify.app/', external: true },
+      { label: 'Apartmani Sentić',    href: 'https://www.apartmani-sentic.com/', external: true },
       { label: 'Svi radovi →',        href: '#radovi', scroll: true },
     ],
   },
@@ -111,6 +116,13 @@ const footerCols = [
 .footer-col h4 { color: white; font-size: 0.84rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 1.2rem; }
 .footer-col a { display: block; color: rgba(255,255,255,0.42); text-decoration: none; font-size: 0.83rem; margin-bottom: 0.6rem; transition: color var(--transition); }
 .footer-col a:hover { color: rgba(255,255,255,0.82); }
+
+.footer-markets {
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem;
+  padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-markets a { color: rgba(255,255,255,0.42); font-size: 0.8rem; text-decoration: none; transition: color var(--transition); }
+.footer-markets a:hover { color: rgba(255,255,255,0.82); }
 
 .footer-bottom { padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer-bottom p { color: rgba(255,255,255,0.28); font-size: 0.78rem; }

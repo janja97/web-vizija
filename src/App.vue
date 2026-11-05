@@ -1,21 +1,17 @@
 <template>
-  <div id="app">
-    <WvNav />
-    <main>
-      <router-view />
-    </main>
-    <WvFooter />
-  </div>
+  <WvNav />
+  <main>
+    <router-view />
+  </main>
+  <WvFooter />
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import WvNav    from './components/WvNav.vue'
 import WvFooter from './components/WvFooter.vue'
-import { setHreflangLinks } from './composables/useSeoMeta'
-import { markets } from './data/markets'
+import { useSeoMeta } from './composables/useSeoMeta'
 
-onMounted(() => setHreflangLinks(markets))
+useSeoMeta()
 </script>
 
 <style>
@@ -23,8 +19,6 @@ onMounted(() => setHreflangLinks(markets))
    GLOBAL STYLES — Design Tokens
    (import in main.js or keep here)
    ═══════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 :root {
   /* Brand — Deep Navy → Teal gradient identity */
   --brand-primary: #0f7b6c;         /* Rich teal */

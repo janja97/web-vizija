@@ -81,16 +81,16 @@ function scrollTo(href) {
 
 const projects = [
   {
-    image: '/img/Silver-Trend.png',
+    image: '/img/Silver-Trend.webp',
     emoji: '💎',
     category: 'Web shop — Nakit i satovi',
     title: 'Silver-Trend',
     desc: 'Web shop nakita i satova s admin panelom, statistikom prodaje i praćenjem poslovanja i baze.',
-    url: 'https://www.silver-trend.com',
+    url: 'https://silver-trend.ba/',
     featured: true,
   },
   {
-    image: '/img/kartica-vijernosti.png',
+    image: '/img/kartica-vijernosti.webp',
     emoji: '💳',
     category: 'Web aplikacija — Program vjernosti',
     title: 'Kartica vjernosti',
@@ -98,7 +98,7 @@ const projects = [
     url: null,
   },
   {
-    image: '/img/Primavera.png',
+    image: '/img/Primavera.webp',
     imagePosition: 'top left',
     emoji: '🏡',
     category: 'Web aplikacija — Nekretnine',
@@ -107,7 +107,7 @@ const projects = [
     url: null,
   },
   {
-    image: '/img/lounge-bar.png',
+    image: '/img/lounge-bar.webp',
     imageMobile: '/img/mobile/lounge-bar.jpg',
     emoji: '🍹',
     category: 'Bar & Kafić',
@@ -116,7 +116,7 @@ const projects = [
     url: 'https://lounges.netlify.app/',
   },
   {
-    image: '/img/premium.png',
+    image: '/img/premium.webp',
     imageMobile: '/img/mobile/premium.jpg',
     emoji: '📸',
     category: 'Fotografija',
@@ -125,7 +125,7 @@ const projects = [
     url: 'https://premiumphotography.netlify.app/',
   },
   {
-    image: '/img/sentic.png',
+    image: '/img/sentic.webp',
     imageMobile: '/img/mobile/sentic.jpg',
     emoji: '🏠',
     category: 'Smještaj — Neum',
@@ -134,7 +134,7 @@ const projects = [
     url: 'https://www.apartmani-sentic.com/',
   },
   {
-    image: '/img/branch.png',
+    image: '/img/branch.webp',
     imageMobile: '/img/mobile/branch.jpg',
     emoji: '☕',
     category: 'Kafić',
@@ -143,7 +143,7 @@ const projects = [
     url: 'https://branch-cafe.netlify.app/',
   },
   {
-    image: '/img/Plusecollection.png',
+    image: '/img/Plusecollection.webp',
     emoji: '🏋️',
     category: 'Web stranica — Teretana',
     title: 'PulseCollection',
@@ -151,7 +151,7 @@ const projects = [
     url: null,
   },
   {
-    image: '/img/tvornica.png',
+    image: '/img/tvornica.webp',
     imageMobile: '/img/mobile/tvornica.jpg',
     emoji: '🎭',
     category: 'Zabava & Events',
@@ -160,7 +160,7 @@ const projects = [
     url: 'https://tvornica-zabave.netlify.app/',
   },
   {
-    image: '/img/flash.png',
+    image: '/img/flash.webp',
     imageMobile: '/img/mobile/flash.jpg',
     emoji: '📷',
     category: 'Foto studio',
@@ -169,7 +169,7 @@ const projects = [
     url: 'https://flesh-studio.netlify.app/',
   },
   {
-    image: '/img/dom.png',
+    image: '/img/dom.webp',
     imageMobile: '/img/mobile/dom.jpg',
     emoji: '🌿',
     category: 'Usluge čišćenja',

@@ -87,8 +87,8 @@
 <script setup>
 defineProps({
   eyebrow:    { type: String, default: 'BiH · HR · SRB — Regionalni digitalni partner' },
-  titleHtml:  { type: String, default: 'Tvoj biznis<br>zaslužuje <em>pravo</em><br>digitalno lice.' },
-  desc:       { type: String, default: 'Web stranice, aplikacije, web shopovi, fotografija, pisanje sadržaja — sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.' },
+  titleHtml:  { type: String, default: 'Izrada web stranica<br>i <em>web aplikacija</em><br>koje donose klijente.' },
+  desc:       { type: String, default: 'Tvoj biznis zaslužuje pravo digitalno lice: web stranice, aplikacije, web shopovi, fotografija i pisanje sadržaja — sve na jednom mjestu. Jedan partner, jedno rješenje, nula komplikacija.' },
   browserUrl: { type: String, default: 'webvizija.com' },
 })
 

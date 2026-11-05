@@ -1,14 +1,17 @@
 // composables/useSeoMeta.js
-// Ažurira document <head> (title, meta, canonical, JSON-LD) po ruti — nema SSR,
-// pa se ovo pokreće na klijentu čim se stranica montira.
+// Prvo učitavanje dolazi s gotovim <head> iz prerendera (scripts/prerender.mjs);
+// ovo ga ažurira pri navigaciji između ruta na klijentu.
 
 import { watchEffect } from 'vue'
-
-const SITE_URL = 'https://webvizija.com'
+import { useRoute } from 'vue-router'
+import { pageSeo, hreflangEntries } from '../data/seo'
 
 function setMetaTag(attr, key, content) {
-  if (!content) return
   let el = document.querySelector(`meta[${attr}="${key}"]`)
+  if (!content) {
+    if (el) el.remove()
+    return
+  }
   if (!el) {
     el = document.createElement('meta')
     el.setAttribute(attr, key)
@@ -19,6 +22,10 @@ function setMetaTag(attr, key, content) {
 
 function setCanonical(href) {
   let el = document.querySelector('link[rel="canonical"]')
+  if (!href) {
+    if (el) el.remove()
+    return
+  }
   if (!el) {
     el = document.createElement('link')
     el.setAttribute('rel', 'canonical')
@@ -29,6 +36,10 @@ function setCanonical(href) {
 
 function setJsonLd(id, data) {
   let el = document.getElementById(id)
+  if (!data) {
+    if (el) el.remove()
+    return
+  }
   if (!el) {
     el = document.createElement('script')
     el.type = 'application/ld+json'
@@ -38,53 +49,8 @@ function setJsonLd(id, data) {
   el.textContent = JSON.stringify(data)
 }
 
-export function useSeoMeta(getMeta) {
-  watchEffect(() => {
-    const meta = getMeta()
-    if (!meta) return
-
-    document.title = meta.title
-    setMetaTag('name', 'description', meta.description)
-    if (meta.keywords) setMetaTag('name', 'keywords', meta.keywords)
-    setMetaTag('property', 'og:title', meta.title)
-    setMetaTag('property', 'og:description', meta.description)
-    setMetaTag('property', 'og:url', meta.canonical)
-    if (meta.ogLocale) setMetaTag('property', 'og:locale', meta.ogLocale)
-    setMetaTag('name', 'twitter:title', meta.title)
-    setMetaTag('name', 'twitter:description', meta.description)
-    setCanonical(meta.canonical)
-
-    if (meta.localBusiness) {
-      setJsonLd('ld-localbusiness-page', {
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        name: 'Web Vizija',
-        description: meta.description,
-        url: meta.canonical,
-        email: 'webbvizija@gmail.com',
-        telephone: '+38763685787',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Mostar',
-          addressRegion: 'Federacija Bosne i Hercegovine',
-          addressCountry: 'BA',
-        },
-        areaServed: { '@type': 'Country', name: meta.localBusiness.areaServed },
-        priceRange: '$$',
-      })
-    }
-  })
-}
-
-// Hreflang alternate linkovi — isti skup na svakoj stranici (uključujući self-referencu),
-// kako Google traži za reciprocitet među lokalizovanim verzijama.
-export function setHreflangLinks(markets) {
+function setHreflangLinks(entries) {
   document.querySelectorAll('link[rel="alternate"][data-hreflang]').forEach((el) => el.remove())
-
-  const entries = [
-    { hreflang: 'x-default', href: `${SITE_URL}/` },
-    ...Object.values(markets).map((m) => ({ hreflang: m.hreflang, href: `${SITE_URL}/${m.slug}` })),
-  ]
 
   entries.forEach(({ hreflang, href }) => {
     const el = document.createElement('link')
@@ -96,4 +62,26 @@ export function setHreflangLinks(markets) {
   })
 }
 
-export { SITE_URL }
+export function useSeoMeta() {
+  if (import.meta.env.SSR) return
+
+  const route = useRoute()
+
+  watchEffect(() => {
+    const seo = pageSeo(route.path)
+
+    document.documentElement.lang = seo.lang
+    document.title = seo.title
+    setMetaTag('name', 'description', seo.description)
+    setMetaTag('name', 'robots', seo.noindex ? 'noindex' : 'index, follow')
+    setMetaTag('property', 'og:title', seo.title)
+    setMetaTag('property', 'og:description', seo.description)
+    setMetaTag('property', 'og:url', seo.canonical)
+    setMetaTag('property', 'og:locale', seo.ogLocale)
+    setMetaTag('name', 'twitter:title', seo.title)
+    setMetaTag('name', 'twitter:description', seo.description)
+    setCanonical(seo.canonical)
+    setJsonLd('ld-page', seo.jsonLd)
+    setHreflangLinks(seo.noindex ? [] : hreflangEntries)
+  })
+}

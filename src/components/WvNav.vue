@@ -45,7 +45,7 @@ import { useRoute } from 'vue-router'
 import WvLogo from './WvLogo.vue'
 
 const route = useRoute()
-const onHome = computed(() => route.path === '/')
+const onHome = computed(() => route.name !== 'not-found')
 
 const isScrolled = ref(false)
 const mobileOpen = ref(false)
@@ -64,7 +64,7 @@ function scrollTo(href) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-// Na Home glatko skrolamo; na drugim rutama (npr. tržišne landing stranice)
+// Home i tržišne landing stranice imaju sve sekcije, pa tu glatko skrolamo; na 404
 // pustimo browser da normalno navigira na "/#zatrazi-ponudu" jer sekcija ondje ne postoji.
 function onLinkClick(event, href) {
   if (!onHome.value) return

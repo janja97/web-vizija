@@ -1,6 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter } from 'vue-router'
 import Home from '../pages/Home.vue'
 import LocalLandingPage from '../pages/LocalLandingPage.vue'
+import NotFound from '../pages/NotFound.vue'
 import { markets } from '../data/markets'
 
 const marketRoutes = Object.keys(markets).map((key) => ({
@@ -10,17 +11,18 @@ const marketRoutes = Object.keys(markets).map((key) => ({
   meta: { marketKey: key },
 }))
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    { path: '/', name: 'home', component: Home },
-    ...marketRoutes,
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
-    return { top: 0 }
-  },
-})
-
-export default router
+export function createAppRouter(history) {
+  return createRouter({
+    history,
+    routes: [
+      { path: '/', name: 'home', component: Home },
+      ...marketRoutes,
+      { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
+    ],
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) return savedPosition
+      if (to.hash) return { el: to.hash, behavior: 'smooth' }
+      return { top: 0 }
+    },
+  })
+}

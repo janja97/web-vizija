@@ -9,7 +9,7 @@
         <div class="cta-left">
           <span class="cta-label">☕ Bez obaveza</span>
           <h2 class="cta-title">
-            Imamš ideju, hajdemo razgovarati.<br>
+            Imaš ideju, hajdemo razgovarati.<br>
             <span>Svaki dobar projekt počinje jednim razgovorom.</span></h2>
           <p class="cta-desc">
             Bez složenih forma, bez čekanja. Zakaži besplatnu konzultaciju i hajde razgovaramo

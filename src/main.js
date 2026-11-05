@@ -1,5 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createWebHistory } from 'vue-router'
+import { createWebVizijaApp } from './createApp'
 
-createApp(App).use(router).mount('#app')
+const { app, router } = createWebVizijaApp(createWebHistory())
+
+router.isReady().then(() => app.mount('#app'))
